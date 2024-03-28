@@ -10,7 +10,7 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<MainPage />} />
-              <Route path="/" element={<SessionRoomPage />} />
+              <Route path="/room" element={<SessionRoomPage />} />
               {/* 다른 라우트들 추가 */}
             </Routes>
           </Router>

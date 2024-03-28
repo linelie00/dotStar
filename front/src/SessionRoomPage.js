@@ -3,7 +3,7 @@ import React from 'react';
 const MainPage = () => {
   return (
     <div>
-        <h1>SessionRoom Page</h1>
+        <h1>Session Room</h1>
     </div>
   );
 };
