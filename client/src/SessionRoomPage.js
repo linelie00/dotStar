@@ -1,11 +1,13 @@
 import React from 'react';
+import Chat from './chatting/Chat.js';
 
-const MainPage = () => {
+const RoomPage = () => {
   return (
     <div>
         <h1>Session Room</h1>
+        <Chat />
     </div>
   );
 };
 
-export default MainPage;
+export default RoomPage;
