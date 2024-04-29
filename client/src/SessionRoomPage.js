@@ -1,10 +1,10 @@
 import React from 'react';
 import Chat from './chatting/Chat.js';
+import './App.css';
 
 const RoomPage = () => {
   return (
     <div>
-        <h1>Session Room</h1>
         <Chat />
     </div>
   );
