@@ -36,15 +36,22 @@ export default function App() {
 
   return (
     <div className="App">
+      <ConnectionState isConnected={ isConnected } />
+      <ConnectionManager />
       <div class="header"></div>
       <div className='chat-bar-container'>
         <div className='bar-container'>
         </div>
         <div className='chat-container'>
-          <ConnectionState isConnected={ isConnected } />
-          <Events events={ fooEvents } />
-          <ConnectionManager />
-          <MyForm />
+          <div className="chat-bar">
+          </div>
+          <div className="chat-box">
+            <Events events={ fooEvents } />
+          </div>
+          <div className="chatting">
+            <div className="name"></div>
+            <MyForm />
+          </div>
         </div>
       </div>
     </div>

@@ -4,14 +4,14 @@ import '../Chat.css';
 
 export function MyForm() {
   const [value, setValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
 
   function onSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
+    //setIsLoading(true);
 
     socket.timeout(5000).emit('message', value, () => {
-      setIsLoading(false);
+      //setIsLoading(false);
     });
   }
 
@@ -34,8 +34,6 @@ export function MyForm() {
         onKeyDown={handleKeyDown} 
         rows={4} 
       />
-
-      <button type="submit" disabled={isLoading}>Submit</button>
     </form>
   );
 }

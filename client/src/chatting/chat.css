@@ -3,6 +3,7 @@ body {
   padding-bottom: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow: hidden;
+  padding-top: 48px;
 }
 
 #messages {
@@ -63,6 +64,15 @@ body {
   color: #fff;
 }
 
+textarea {
+  width: 300px; /* 텍스트 영역의 너비를 부모 요소의 100%로 설정 */
+  height: 55px; /* 텍스트 영역의 높이를 200px로 설정 */
+  resize: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #a0a0a0;
+  font-family: inherit; /* 폰트를 부모 요소의 폰트로 상속받음 (기본 폰트로 설정) */
+}
 
 .room-container {
   position: sticky;
@@ -94,11 +104,11 @@ body {
 }
 .chat-container {
   position: fixed;
-  top: 0;
+  top: 48px;
   right: 0;
   width: 340px; /* 채팅창의 너비 조정 */
   min-width: 340px; /* 채팅창의 최소 너비 설정 */
-  height: 100vh; /* 채팅창의 높이를 화면 전체로 설정 */
+  height: calc(100vh - 48px); /* 채팅창의 높이를 화면 전체로 설정 */
   background-color: #ffffff; /* 채팅창의 배경색 설정 */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
@@ -112,7 +122,37 @@ body {
   min-height: 260px; /* 채팅창의 최소 높이 설정 */
   background-color: #B8C1EE; /* 채팅창의 배경색 설정 */
   border-radius: 20px 0 0 20px; /* 채팅창의 모서리를 둥글게 설정 */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+.chat-box {
+  position: relative; /* textarea를 부모 요소에 고정합니다. */
+  width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
+  height: calc(100vh - 208px); /* textarea의 높이를 부모 요소의 높이에 맞춥니다. */
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+.chat-box::-webkit-scrollbar {
+  display: none; /* 스크롤바를 숨깁니다. */
+}
+.chatting {
+  position: absolute; /* textarea를 부모 요소에 고정합니다. */
+  width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
+  bottom: 0; /* 아래쪽에 고정시킵니다. */
+}
+.name {
+  width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
+  height: 36px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  border-top: 2px solid #d9d9d9;
+}
+.chat-bar {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  top: 0;
+  background-color: #E4E9FF;
+  border-bottom: 2px solid #B8C1EE;
 }
 .header {
   position: fixed;
