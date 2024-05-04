@@ -4,14 +4,11 @@ import '../Chat.css';
 
 export function MyForm() {
   const [value, setValue] = useState('');
-  //const [isLoading, setIsLoading] = useState(false);
 
   function onSubmit(event) {
     event.preventDefault();
-    //setIsLoading(true);
-
     socket.timeout(5000).emit('message', value, () => {
-      //setIsLoading(false);
+      setValue(''); // 메시지 전송 후 textarea 값을 초기화
     });
   }
 
