@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding-bottom: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
 #messages {
@@ -80,38 +81,50 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f5f5f5;
+  overflow: hidden;
 }
-.Box{
-  width:40%;
-  height: 80%;
-  border:1px solid black;
-  border-radius: 1rem;
+.chat-bar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 388px; /* 채팅창의 너비 조정 */
+  min-width: 388px; /* 채팅창의 최소 너비 설정 */
+  height: 100vh; /* 채팅창의 높이를 화면 전체로 설정 */
 }
-.ChatBox{
-  border:1px solid black;
-  border-radius: 1rem;
-  height:95%;
-  width: 100%;
- display: flex;
- justify-content: center;
+.chat-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px; /* 채팅창의 너비 조정 */
+  min-width: 340px; /* 채팅창의 최소 너비 설정 */
+  height: 100vh; /* 채팅창의 높이를 화면 전체로 설정 */
+  background-color: #ffffff; /* 채팅창의 배경색 설정 */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.InputBox{
-  display: flex;
-  height: 5%;
-  flex:1;
-  justify-content: center;
-  align-items: center;
-
+.bar-container {
+  position: fixed;
+  top: 48px;
+  right: 340px;
+  width: 48px; /* 채팅창의 너비 조정 */
+  min-width: 48px; /* 채팅창의 최소 너비 설정 */
+  height: 260px; /* 채팅창의 높이를 화면 전체로 설정 */
+  min-height: 260px; /* 채팅창의 최소 높이 설정 */
+  background-color: #B8C1EE; /* 채팅창의 배경색 설정 */
+  border-radius: 20px 0 0 20px; /* 채팅창의 모서리를 둥글게 설정 */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.Chat{
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  width:80%;
-  height:20%;
-  border:1px solid sandybrown;
-  border-radius: 1rem;
-}
-.ChatLog{
-  margin-left:100px;
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100vw;
+  height: 48px; /* 상단 바의 높이 조정 */
+  min-height: 48px; /* 상단 바의 최소 높이 설정 */
+  background-color: #3f3f3f; /* 상단 바의 배경색 설정 */
+  color: #ffffff; /* 상단 바의 텍스트 색상 설정 */
+  text-align: center; /* 텍스트를 가운데 정렬 */
+  line-height: 50px; /* 텍스트의 수직 가운데 정렬 */
+  z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { socket } from '../socket';
+import '../Chat.css';
 
 export function MyForm() {
   const [value, setValue] = useState('');
@@ -14,11 +15,27 @@ export function MyForm() {
     });
   }
 
-  return (
-    <form onSubmit={ onSubmit }>
-      <input onChange={ e => setValue(e.target.value) } />
+  function handleInputChange(event) {
+    setValue(event.target.value);
+  }
 
-      <button type="submit" disabled={ isLoading }>Submit</button>
+  function handleKeyDown(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      onSubmit(event);
+    }
+  }
+
+  return (
+    <form onSubmit={onSubmit}>
+      <textarea 
+        value={value} 
+        onChange={handleInputChange} 
+        onKeyDown={handleKeyDown} 
+        rows={4} 
+      />
+
+      <button type="submit" disabled={isLoading}>Submit</button>
     </form>
   );
 }
