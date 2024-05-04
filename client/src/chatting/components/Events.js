@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { socket } from '../socket';
+import './ChatComponents.css';
 
 export function Events() {
   const [events, setEvents] = useState([]);
@@ -21,13 +22,15 @@ export function Events() {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '');
       return !inline && match ? (
-        <SyntaxHighlighter
-          {...props}
-          children={String(children).replace(/\n$/, '')}
-          style={dark}
-          language={match[1]}
-          PreTag="div"
-        />
+        <div className="code-wrapper" key={props.key}>
+          <SyntaxHighlighter
+            {...props}
+            children={String(children).replace(/\n$/, '')}
+            style={dark}
+            language={match[1]}
+            PreTag="div"
+          />
+        </div>
       ) : (
         <code {...props} className={className}>
           {children}
@@ -48,12 +51,14 @@ export function Events() {
   }
 
   return (
-    <ul>
+    <div>
       {events.map((event, index) => (
-        <ReactMarkdown key={index} components={components}>
-          {event}
-        </ReactMarkdown>
+        <div className="event-wrapper"  key={index}>
+          <ReactMarkdown key={index} components={components}>
+            {event}
+          </ReactMarkdown>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }

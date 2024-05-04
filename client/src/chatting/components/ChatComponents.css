@@ -1,0 +1,15 @@
+.event-wrapper {
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 50px;
+  }
+
+  .event-wrapper:hover {
+    background-color: #E4E9FF; /* 호버 시 배경색 변경 */
+  }
+  
+  .code-wrapper:hover {
+    background-color: #E4E9FF; /* 코드 블록 호버 시 배경색 변경 */
+  }
