@@ -1,0 +1,9 @@
+{
+    "id": "san00",
+    "name": "Example",
+    "description": "This is an example JSON object with an image and an ID.",
+    "img": {
+      "src": "https://example.com/image.jpg",
+      "alt": "Example Image"
+    }
+  }
