@@ -4,6 +4,7 @@ import { ConnectionState } from './components/ConnectionState';
 import { ConnectionManager } from './components/ConnectionManager';
 import { Events } from "./components/Events";
 import { MyForm } from './components/MyForm';
+import { CharacterSelect } from "./components/CharacterSelectBar";
 import './Chat.css';
 
 export default function App() {
@@ -49,7 +50,9 @@ export default function App() {
             <Events events={ fooEvents } />
           </div>
           <div className="chatting">
-            <div className="name"></div>
+            <div className="name">
+              <CharacterSelect />
+            </div>
             <MyForm />
           </div>
         </div>

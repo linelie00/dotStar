@@ -65,15 +65,15 @@ export function Events() {
   return (
     <div>
       {events.map((event, index) => (
-        <div className="event-wrapper"  key={index}>
+        <div className="event-wrapper" key={index}>
           <div className="event-text">
             <ReactMarkdown key={index} components={components}>
               {event}
             </ReactMarkdown>
           </div>
-          <div className="border"></div>
+          {(index + 1) % 5 === 0 && <div className="border"></div>}
         </div>
       ))}
     </div>
-  );
+  );  
 }
