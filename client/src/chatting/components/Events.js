@@ -42,21 +42,28 @@ export function Events() {
 
   // 줄바꿈을 처리하는 함수
   function parseNewLines(text) {
-    return text.split('\n').map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        <br />
-      </React.Fragment>
-    ));
+    if (typeof text === 'string') {
+      return text.split('\n').map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+      ));
+    } else {
+      return text;
+    }
   }
 
   return (
     <div>
       {events.map((event, index) => (
         <div className="event-wrapper"  key={index}>
-          <ReactMarkdown key={index} components={components}>
-            {event}
-          </ReactMarkdown>
+          <div className="event-text">
+            <ReactMarkdown key={index} components={components}>
+              {event}
+            </ReactMarkdown>
+          </div>
+          <div className="border"></div>
         </div>
       ))}
     </div>
