@@ -1,9 +1,5 @@
 .event-wrapper {
-    text-align: left;
-    padding-left: 50px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 50px;
+    
   }
 
   .event-wrapper:hover {
@@ -12,4 +8,18 @@
   
   .code-wrapper:hover {
     background-color: #E4E9FF; /* 코드 블록 호버 시 배경색 변경 */
+  }
+
+  .event-text {
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 30px;
+  }
+
+  .border {
+    position: relative;
+    border-top: 1px solid #d9d9d9;
+    width: 100%;
   }
