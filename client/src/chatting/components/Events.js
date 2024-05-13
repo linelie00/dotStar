@@ -4,6 +4,7 @@ import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { socket } from '../socket';
 import './ChatComponents.css';
+import user from './user1.jpg';
 
 export function Events() {
   const [events, setEvents] = useState([]);
@@ -14,8 +15,9 @@ export function Events() {
   }
 
   useEffect(() => {
-    const handleMessageReceive = (data) => {
-      setEvents((prevEvents) => [...prevEvents, preprocessText(data)]);
+    const handleMessageReceive = ( charId, value ) => {
+      setEvents((prevEvents) => [...prevEvents, {charId, value: preprocessText(value)}]);
+      console.log(value);
     };
   
     socket.on('receive message', handleMessageReceive);
@@ -49,7 +51,6 @@ export function Events() {
 
   // 줄바꿈을 처리하는 함수
   function parseNewLines(text) {
-    // 마크다운 형식이면 줄바꿈 처리
     if (typeof text === 'string') {
       return text.split('\n').map((line, index) => (
         <React.Fragment key={index}>
@@ -66,9 +67,13 @@ export function Events() {
     <div>
       {events.map((event, index) => (
         <div className="event-wrapper" key={index}>
+          <div className="top-table">
+            <img src={user} alt="user" />
+            <b>{event.charId}</b>
+          </div>
           <div className="event-text">
             <ReactMarkdown key={index} components={components}>
-              {event}
+              {event.value}
             </ReactMarkdown>
           </div>
           {(index + 1) % 5 === 0 && <div className="border"></div>}

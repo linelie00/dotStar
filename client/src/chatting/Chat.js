@@ -4,7 +4,7 @@ import { ConnectionState } from './components/ConnectionState';
 import { ConnectionManager } from './components/ConnectionManager';
 import { Events } from "./components/Events";
 import { MyForm } from './components/MyForm';
-import { CharacterSelect } from "./components/CharacterSelectBar";
+import CharacterSelect from "./components/CharacterSelectBar";
 import './Chat.css';
 
 export default function App() {

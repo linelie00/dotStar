@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { socket } from '../socket';
 import '../Chat.css';
 
 export function MyForm() {
+  const [charId, setCharId] = useState('');
   const [value, setValue] = useState('');
 
+  useEffect(() => {
+    setCharId('user1');
+  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 함
+
   function onSubmit(event) {
+
     event.preventDefault();
-    socket.timeout(5000).emit('message', value, () => {
-      setValue(''); // 메시지 전송 후 textarea 값을 초기화
+    socket.timeout(5000).emit('message', charId, value, () => {
+      setValue('');
     });
   }
 

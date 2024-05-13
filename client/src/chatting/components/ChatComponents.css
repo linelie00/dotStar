@@ -1,3 +1,8 @@
+  .event-wrapper {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+  }
   .event-wrapper:hover {
     background-color: #E4E9FF; /* 호버 시 배경색 변경 */
   }
@@ -37,5 +42,28 @@
     display: flex; /* 자식 요소를 가로로 정렬하기 위해 flex로 설정 */
     align-items: center; /* 자식 요소를 세로 가운데 정렬 */
     width: 40%;
+    padding-left: 12px;
+  }
+  img {
+    width: 24px;
+    height: 24px;
+    background-color: gray;
+    border-radius: 100%;
+  }
+  .top-table {
+    position: relative;
+    height: 25px;
+    text-align: left;
     padding-left: 10px;
+    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
+  }
+  .top-table b {
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 10px;
+    position: relative;
+    top: -6px;
   }
