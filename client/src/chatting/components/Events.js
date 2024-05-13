@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { socket } from '../socket';
 import './ChatComponents.css';
 import user from './user1.jpg';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export function Events() {
   const [events, setEvents] = useState([]);
@@ -15,8 +16,8 @@ export function Events() {
   }
 
   useEffect(() => {
-    const handleMessageReceive = ( charId, value ) => {
-      setEvents((prevEvents) => [...prevEvents, {charId, value: preprocessText(value)}]);
+    const handleMessageReceive = ( char, value ) => {
+      setEvents((prevEvents) => [...prevEvents, {char, value: preprocessText(value)}]);
       console.log(value);
     };
   
@@ -69,7 +70,7 @@ export function Events() {
         <div className="event-wrapper" key={index}>
           <div className="top-table">
             <img src={user} alt="user" />
-            <b>{event.charId}</b>
+            <b>{event.char['name']}</b>
           </div>
           <div className="event-text">
             <ReactMarkdown key={index} components={components}>

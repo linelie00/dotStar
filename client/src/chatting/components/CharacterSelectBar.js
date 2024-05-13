@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import user from './user1.jpg';
 
-function Events() {
-  const [selectedUser, setSelectedUser] = useState('user1'); // 기본 사용자 선택
+function Events({ onCharSelect }) {
 
   const handleChange = (event) => {
-    setSelectedUser(event.target.value);
+    const selectedValue = event.target.value;
+    const char = {id: `${selectedValue}-id`, name: selectedValue};
+    onCharSelect(char); // 콜백 함수 호출하여 선택한 값을 전달
   };
 
   return (
     <div className="select-component">
         <img src={user} alt="user" />
-      <select value={selectedUser} onChange={handleChange}>
+      <select onChange={handleChange}>
         <option value="user1">User 1</option>
         <option value="user2">User 2</option>
         <option value="user3">User 3</option>

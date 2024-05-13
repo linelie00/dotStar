@@ -10,14 +10,17 @@ import './Chat.css';
 export default function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [fooEvents, setFooEvents] = useState([]);
+  const [selectedChar, setSelectedChar] = useState({id:'', name:''});
 
   useEffect(() => {
     function onConnect() {
       setIsConnected(true);
+      setSelectedChar({id:'user1-id', name:'user1'});
     }
 
     function onDisconnect() {
       setIsConnected(false);
+      setSelectedChar({id:'', name:''});
     }
 
     function onFooEvent(value) {
@@ -35,6 +38,10 @@ export default function App() {
     };
   }, []);
 
+  const handleCharSelect = (char) => {
+    setSelectedChar(char);
+  };
+
   return (
     <div className="App">
       <ConnectionState isConnected={ isConnected } />
@@ -51,9 +58,9 @@ export default function App() {
           </div>
           <div className="chatting">
             <div className="name">
-              <CharacterSelect />
+              <CharacterSelect onCharSelect={handleCharSelect} />
             </div>
-            <MyForm />
+            <MyForm selectedChar={selectedChar} />
           </div>
         </div>
       </div>

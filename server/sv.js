@@ -16,10 +16,10 @@ io.on("connection", (socket) => {
     console.log('disconnected');
   });
 
-  socket.on('message', (charId, value, callback) => {
-    console.log('message :', charId, value);
+  socket.on('message', (char, value, callback) => {
+    console.log('message :', char['id'], char['name'], value);
     callback('Data received and processed successfully');
-    io.emit("receive message", charId, value);
+    io.emit("receive message", char, value);
   });
 });
 
