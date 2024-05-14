@@ -5,28 +5,63 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { socket } from '../socket';
 import './ChatComponents.css';
 import user from './user1.jpg';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export function Events() {
   const [events, setEvents] = useState([]);
-
-  function preprocessText(text) {
-    // *나 #로 시작하는 줄 바로 뒤에 오는 줄바꿈에 대해 두 번의 추가 띄어쓰기를 적용
-    return text.replace(/([*#])\n/g, (match, p1) => `${p1}  \n`);
-  }
+  const [count, setCount] = useState(1);
+  const [prevCharId, setPrevCharId] = useState(null);
+  const [borders, setBorders] = useState([]);
 
   useEffect(() => {
-    const handleMessageReceive = ( char, value ) => {
-      setEvents((prevEvents) => [...prevEvents, {char, value: preprocessText(value)}]);
-      console.log(value);
+    const handleMessageReceive = (char, value) => {
+      setEvents((prevEvents) => [...prevEvents, { char, value: preprocessText(value) }]);
+  
+      if (prevCharId !== char.id) {
+        setCount(1);
+        setPrevCharId(char.id);
+        setBorders((prevBorders) => [...prevBorders, events.length]);
+      } else {
+        setCount(count + 1);
+      }
     };
+
+    if (count % 5 === 0) {
+      setBorders((prevBorders) => [...prevBorders, events.length]);
+    }
   
     socket.on('receive message', handleMessageReceive);
   
     return () => {
       socket.off('receive message', handleMessageReceive);
     };
-  }, []);
+  }, [prevCharId, count, events.length]);
+  
+  /*
+  useEffect(() => {
+    if (count % 5 === 0) {
+      setBorders((prevBorders) => [...prevBorders, events.length]);
+    }
+  }, [count, events.length]);
+
+  */
+
+  const preprocessText = (text) => {
+    return text.replace(/([*#])\n/g, (match, p1) => `${p1}  \n`);
+  };
+  
+
+  const parseNewLines = (text) => {
+    if (typeof text === 'string') {
+      return text.split('\n').map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+      ));
+    } else {
+      return text;
+    }
+  };
 
   const components = {
     code({ node, inline, className, children, ...props }) {
@@ -50,36 +85,22 @@ export function Events() {
     p: ({ node, children }) => parseNewLines(children),
   };
 
-  // 줄바꿈을 처리하는 함수
-  function parseNewLines(text) {
-    if (typeof text === 'string') {
-      return text.split('\n').map((line, index) => (
-        <React.Fragment key={index}>
-          {line}
-          <br />
-        </React.Fragment>
-      ));
-    } else {
-      return text;
-    }
-  }
-  
   return (
     <div>
       {events.map((event, index) => (
         <div className="event-wrapper" key={index}>
-          <div className="top-table">
+          {borders.includes(index) && <div className="border"></div>}
+          {borders.includes(index) && <div className="top-table">
             <img src={user} alt="user" />
             <b>{event.char['name']}</b>
-          </div>
+          </div>}
           <div className="event-text">
-            <ReactMarkdown key={index} components={components}>
+            <ReactMarkdown key={event.value} components={components}>
               {event.value}
             </ReactMarkdown>
           </div>
-          {(index + 1) % 5 === 0 && <div className="border"></div>}
         </div>
       ))}
     </div>
-  );  
+  );
 }
