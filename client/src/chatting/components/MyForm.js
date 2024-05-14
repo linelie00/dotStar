@@ -14,6 +14,10 @@ export function MyForm({selectedChar}) {
   }
 
   function handleInputChange(event) {
+    if (event.target.value.trim() === '') {
+      setValue('');
+      return;
+    }
     setValue(event.target.value);
   }
 
