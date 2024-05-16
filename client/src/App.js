@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import SessionRoomPage from './SessionRoomPage';
+import TestLoginPage from './TestLoginPage';
 import './App.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/room" element={<SessionRoomPage />} />
+              <Route path="/login" element={<TestLoginPage />} />
               {/* 다른 라우트들 추가 */}
             </Routes>
           </Router>

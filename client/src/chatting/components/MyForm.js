@@ -6,6 +6,9 @@ export function MyForm({selectedChar}) {
   const [value, setValue] = useState('');
 
   function onSubmit(event) {
+    if (event.target.value.trim() === '') {
+      return;
+    }
 
     event.preventDefault();
     socket.timeout(5000).emit('message', selectedChar, value, () => {
@@ -14,10 +17,6 @@ export function MyForm({selectedChar}) {
   }
 
   function handleInputChange(event) {
-    if (event.target.value.trim() === '') {
-      setValue('');
-      return;
-    }
     setValue(event.target.value);
   }
 
