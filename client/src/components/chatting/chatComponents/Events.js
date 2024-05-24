@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { socket } from '../socket';
-import './ChatComponents.css';
-import user from './user1.jpg';
+import { socket } from '../../../socket';
+import '../../../styles/ChatComponents.css';
+import user from '../../../assets/user1.jpg';
 
 export function Events() {
   const [events, setEvents] = useState([]);

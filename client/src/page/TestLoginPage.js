@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import { socket } from './chatting/socket';
+import '../App.css';
+import { socket } from '../socket';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -12,8 +12,7 @@ const LoginPage = () => {
     const id = event.target.id.value;
     const room = event.target.room.value;
     const user = { name: name, id: id };
-
-    console.log(user, room);
+    socket.connect();
     socket.emit('join', { user, room }, (error) => {
       if (error) {
         alert(error);

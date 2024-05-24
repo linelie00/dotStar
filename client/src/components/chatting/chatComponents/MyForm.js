@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { socket } from '../socket';
-import '../Chat.css';
+import { socket } from '../../../socket';
+import '../../../styles/Chat.css';
 
 export function MyForm({selectedChar}) {
   const [value, setValue] = useState('');
@@ -11,7 +11,12 @@ export function MyForm({selectedChar}) {
     }
 
     event.preventDefault();
+    /*
     socket.timeout(5000).emit('message', selectedChar, value, () => {
+      setValue('');
+    });
+    */
+    socket.timeout(5000).emit('broadcast', "1", selectedChar, value, () => {
       setValue('');
     });
   }

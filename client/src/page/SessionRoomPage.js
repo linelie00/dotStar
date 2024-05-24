@@ -1,6 +1,6 @@
 import React from 'react';
-import Chat from './chatting/Chat.js';
-import './App.css';
+import Chat from '../components/chatting/Chat.js';
+import '../App.css';
 
 const RoomPage = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import user from './user1.jpg';
+import user from '../../../assets/user1.jpg';
 
 function Events({ onCharSelect }) {
 

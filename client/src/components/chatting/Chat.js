@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { socket } from './socket';
-import { ConnectionState } from './components/ConnectionState';
-import { ConnectionManager } from './components/ConnectionManager';
-import { Events } from "./components/Events";
-import { MyForm } from './components/MyForm';
-import CharacterSelect from "./components/CharacterSelectBar";
-import './Chat.css';
+import { socket } from '../../socket';
+import { ConnectionState } from './chatComponents/ConnectionState';
+import { ConnectionManager } from './chatComponents/ConnectionManager';
+import { Events } from "./chatComponents/Events";
+import { MyForm } from './chatComponents/MyForm';
+import CharacterSelect from "./chatComponents/CharacterSelectBar";
+import '../../styles/Chat.css';
 
 export default function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -27,14 +27,26 @@ export default function App() {
       setFooEvents(previous => [...previous, value]);
     }
 
+    function onJoinEvent(user) {
+      console.log('join :', user);
+    }
+
+    function onWelcomeEvent(user) {
+      console.log('welcome :', user);
+    }
+
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('foo', onFooEvent);
+    socket.on('join', onJoinEvent);
+    socket.on('welcome', onWelcomeEvent);
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('foo', onFooEvent);
+      socket.off('join', onJoinEvent);
+      socket.off('welcome', onWelcomeEvent);
     };
   }, []);
 
