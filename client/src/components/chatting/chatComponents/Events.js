@@ -35,15 +35,6 @@ export function Events() {
       socket.off('receive message', handleMessageReceive);
     };
   }, [prevCharId, count, events.length]);
-  
-  /*
-  useEffect(() => {
-    if (count % 5 === 0) {
-      setBorders((prevBorders) => [...prevBorders, events.length]);
-    }
-  }, [count, events.length]);
-
-  */
 
   const preprocessText = (text) => {
     return text.replace(/([*#])\n/g, (match, p1) => `${p1}  \n`);

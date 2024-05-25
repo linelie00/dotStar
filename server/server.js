@@ -1,8 +1,6 @@
 const express = require('express');
 const { join } = require('node:path');
 const { Server } = require("socket.io");
-// const { createServer } = require('node:http');
-
 const port = 8282;
 const app = express();
 const server = require('http').createServer(app);
@@ -17,7 +15,7 @@ server.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'index.html'));
+  res.send('Hello World');
 });
 
 //소켓 연결

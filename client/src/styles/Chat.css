@@ -91,6 +91,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   background-color: #f5f5f5;
   overflow: hidden;
 }
