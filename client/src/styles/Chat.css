@@ -97,15 +97,15 @@ textarea {
 }
 .chat-bar-container {
   position: fixed;
-  top: 0;
+  top: 48px;
   right: 0;
   width: 388px; /* 채팅창의 너비 조정 */
   min-width: 388px; /* 채팅창의 최소 너비 설정 */
   height: 100vh; /* 채팅창의 높이를 화면 전체로 설정 */
 }
 .chat-container {
-  position: fixed;
-  top: 48px;
+  position: absolute;
+  top: 0;
   right: 0;
   width: 340px; /* 채팅창의 너비 조정 */
   min-width: 340px; /* 채팅창의 최소 너비 설정 */
@@ -114,8 +114,8 @@ textarea {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .bar-container {
-  position: fixed;
-  top: 48px;
+  position: absolute;
+  top: 0;
   right: 340px;
   width: 48px; /* 채팅창의 너비 조정 */
   min-width: 48px; /* 채팅창의 최소 너비 설정 */
@@ -128,7 +128,7 @@ textarea {
 .chat-box {
   position: relative; /* textarea를 부모 요소에 고정합니다. */
   width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
-  height: calc(100vh - 208px); /* textarea의 높이를 부모 요소의 높이에 맞춥니다. */
+  height: calc(100vh - 80px); /* textarea의 높이를 부모 요소의 높이에 맞춥니다. */
   overflow-y: auto;
   background-color: #ffffff;
 }

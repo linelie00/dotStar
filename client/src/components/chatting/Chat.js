@@ -20,12 +20,12 @@ export default function App({ setSelectedChar,selectedChar }) {
         </div>
         <div className="chat-box">
           <Events/>
-        </div>
-        <div className="chatting">
+          <div className="chatting">
           <div className="name">
             <CharacterSelect onCharSelect={handleCharSelect} />
           </div>
           <MyForm selectedChar={selectedChar} />
+        </div>
         </div>
       </div>
     </div>
