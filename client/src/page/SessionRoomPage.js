@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Chat from '../components/chatting/Chat.js';
 import { ConnectionManager } from '../components/chatting/chatComponents/ConnectionManager';
 import { socket } from '../socket';
-import '../styles/Chat.css';
 import { ConnectionState } from '../components/chatting/chatComponents/ConnectionState';
+import '../styles/Chat.css';
+
+import anchorIcon from '../assets/images/anchor.svg';
+import curserIcon from '../assets/images/curser.svg';
+import diceIcon from '../assets/images/dice.svg';
+import paleteIcon from '../assets/images/palete.svg';
+import textIcon from '../assets/images/text.svg';
+import linkIcon from '../assets/images/link.svg';
+import { Link } from 'react-router-dom';
 
 const RoomPage = () => {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -43,9 +51,35 @@ const RoomPage = () => {
 
   return (
     <div className="App">
+      <div className="header">
+        <div className="header-button-container">
+          <button className="button">
+            <img src={anchorIcon} alt="Home" />
+          </button>
+          <button className="button">
+            <img src={curserIcon} alt="Home" />
+          </button>
+          <button className="button">
+            <img src={diceIcon} alt="Home" />
+          </button>
+          <button className="button">
+            <img src={paleteIcon} alt="Home" />
+          </button>
+          <button className="button">
+            <img src={textIcon} alt="Home" />
+          </button>
+        </div>
+        <div className="breadcrumbs">
+          세상의 중심에서/map1
+        </div>
+        <div className="link-button-container">
+        <button className="button">
+          <img src={linkIcon} alt="Home" />
+          </button>
+        </div>
+      </div>
       <ConnectionState isConnected={ isConnected } />
       <ConnectionManager />
-      <div class="header"></div>
       <Chat 
       setSelectedChar={setSelectedChar}
       selectedChar={selectedChar}
