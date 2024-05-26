@@ -11,11 +11,10 @@ export function MyForm({selectedChar}) {
     }
 
     event.preventDefault();
-    /*
+    
     socket.timeout(5000).emit('message', selectedChar, value, () => {
       setValue('');
     });
-    */
     socket.timeout(5000).emit('broadcast', "1", selectedChar, value, () => {
       setValue('');
     });

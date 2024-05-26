@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Chat from '../components/chatting/Chat.js';
-import { ConnectionManager } from '../components/chatting/chatComponents/ConnectionManager';
 import { socket } from '../socket';
+import Chat from '../components/chatting/Display.js';
+import { ConnectionManager } from '../components/chatting/chatComponents/ConnectionManager';
 import { ConnectionState } from '../components/chatting/chatComponents/ConnectionState';
 import '../styles/Chat.css';
 
@@ -11,7 +11,6 @@ import diceIcon from '../assets/images/dice.svg';
 import paleteIcon from '../assets/images/palete.svg';
 import textIcon from '../assets/images/text.svg';
 import linkIcon from '../assets/images/link.svg';
-import { Link } from 'react-router-dom';
 
 const RoomPage = () => {
   const [isConnected, setIsConnected] = useState(socket.connected);

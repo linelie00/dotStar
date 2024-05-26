@@ -95,7 +95,7 @@ textarea {
   background-color: #f5f5f5;
   overflow: hidden;
 }
-.chat-bar-container {
+.content-container {
   position: fixed;
   top: 48px;
   right: 0;
@@ -110,10 +110,10 @@ textarea {
   width: 340px; /* 채팅창의 너비 조정 */
   min-width: 340px; /* 채팅창의 최소 너비 설정 */
   height: calc(100vh - 48px); /* 채팅창의 높이를 화면 전체로 설정 */
-  background-color: #ffffff; /* 채팅창의 배경색 설정 */
+  background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.bar-container {
+.chat-nav {
   position: absolute;
   top: 0;
   right: 340px;
@@ -124,13 +124,25 @@ textarea {
   background-color: #B8C1EE; /* 채팅창의 배경색 설정 */
   border-radius: 20px 0 0 20px; /* 채팅창의 모서리를 둥글게 설정 */
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  display: flex; /* Flexbox 레이아웃 설정 */
+  align-items: center; /* 자식 요소들을 가로로 가운데 정렬 */
+  flex-direction: column; /* 자식 요소들을 세로로 정렬 */
+  justify-content: center; /* 자식 요소들을 세로로 가운데 정렬 */
 }
+.nav-b-container {
+  width: 24px;
+  height: 200px;
+  justify-content: space-between; /* 자식 요소 사이의 간격을 최대로 설정 */
+  align-items: center; /* 자식 요소들을 가로로 가운데 정렬 */
+  flex-direction: column; /* 자식 요소들을 세로로 정렬 */
+  display: flex; /* Flexbox 레이아웃 설정 */
+}
+
 .chat-box {
   position: relative; /* textarea를 부모 요소에 고정합니다. */
   width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
-  height: calc(100vh - 80px); /* textarea의 높이를 부모 요소의 높이에 맞춥니다. */
+  height: calc(100% - 159px); /* textarea의 높이를 부모 요소의 높이에 맞춥니다. */
   overflow-y: auto;
-  background-color: #ffffff;
 }
 .chat-box::-webkit-scrollbar {
   display: none; /* 스크롤바를 숨깁니다. */
@@ -139,6 +151,7 @@ textarea {
   position: absolute; /* textarea를 부모 요소에 고정합니다. */
   width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
   bottom: 0; /* 아래쪽에 고정시킵니다. */
+  background-color: #ffffff;
 }
 .name {
   width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
@@ -147,6 +160,9 @@ textarea {
   margin-bottom: 10px;
   border-top: 2px solid #d9d9d9;
   text-align: left;
+  display: flex;
+  align-items: center; /* 자식 요소를 세로로 가운데 정렬 */
+  justify-content: space-between;
 }
 .chat-bar {
   position: relative;
@@ -183,9 +199,8 @@ textarea {
 
 .header-button-container {
   position: absolute;
-  width: 248px; /* 버튼의 너비 조정 */
+  width: 216px; /* 버튼의 너비 조정 */
   height: 32px; /* 버튼의 높이 조정 */
-  justify-content: center; /* 버튼을 가로로 가운데 정렬 */
   align-items: center; /* 버튼을 세로로 가운데 정렬 */
   display: flex; /* 버튼을 가로로 정렬 */
   margin-left: 15px;
@@ -215,4 +230,16 @@ textarea {
   width: 100%; /* 이미지를 버튼의 너비에 맞춤 */
   height: 100%; /* 이미지를 버튼의 높이에 맞춤 */
   background-color: none;
+}
+
+.name-img-container {
+  display: flex; /* Flexbox 레이아웃 설정 */
+  align-items: center; /* 자식 요소들을 세로로 가운데 정렬 */
+  margin-right: 12px;
+}
+
+.chat-box-container {
+  position: absolute;
+  width: 100%; /* 채팅창의 너비 조정 */
+  height: 100%; /* 채팅창의 높이를 화면 전체로 설정 */
 }
