@@ -1,40 +1,18 @@
-const express = require('express');
-const { join } = require('node:path');
-const { Server } = require("socket.io");
-const port = 8282;
-const app = express();
-const server = require('http').createServer(app);
-const io = new Server({
+const httpServer = require("http").createServer();
+const io = require("socket.io")(httpServer, {
   cors: {
-    origin: "http://localhost:3000"
-  }
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
 });
 
-server.listen(port, () => {
-    console.log(`server running at http://localhost:${port}`);
+const socketRoutes = require('./src/routes/socketRoutes');
+
+io.on("connection", (socket) => {
+  console.log("connection");
+  socketRoutes(socket, io);
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+httpServer.listen(8282, () => {
+  console.log("Server listening on port 8282");
 });
-
-//소켓 연결
-io.on('connection', (socket) => {
-  io.emit('chat message', 'a user connected');
-  console.log('a user connected');
-  let id = socket.id;
-
-  socket.on('disconnect', () => {
-    socket.broadcast.emit('chat message', 'user disconnected');
-    console.log('user disconnected');
-  });
-
-  socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
-  });
-  
-  socket.on('Whisper', (msg) => {
-    io.to(id).emit('Whisper', msg);
-  });
-});
-

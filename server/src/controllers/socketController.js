@@ -1,68 +1,67 @@
-const httpServer = require("http").createServer();
-const io = require("socket.io")(httpServer, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
-
-io.on("connection", (socket) => {
-  console.log("connection");
-  socket.on("init", (payload) => {
+const handleInit = (payload) => {
     console.log(payload);
-  });
-
-  socket.on('disconnect', () => {
+  };
+  
+  const handleDisconnect = () => {
     console.log('disconnected');
-  });
-
-  socket.on('foo', (value, callback) => {
+  };
+  
+  const handleFoo = (value, callback, io) => {
     console.log('foo :', value);
     callback('Data received and processed successfully');
     io.emit("foo", value);
-  });
-
-  socket.on('login', (user, callback) => {  
+  };
+  
+  const handleLogin = (user, callback, socket, io) => {
     console.log('login :', user);
     socket.join(room);
     io.to(room).emit("login", user);
     callback('Data received and processed successfully');
-  });
-
-  socket.on('join', (user, room) => {
+  };
+  
+  const handleJoin = (user, room, socket) => {
     console.log('join :', user, room);
     socket.join(room);
     socket.join(user['id']);
     io.to(room).emit('join', user);
     socket.emit('welcome', user);
-    //callback('Data received and processed successfully');
     console.log(`User ${user.id} joined room ${room}`);
-  });
-
-  socket.on('leave', (user, room, callback) => {
+  };
+  
+  const handleLeave = (user, room, callback, socket) => {
     console.log('leave :', user, room);
     socket.leave(room);
     socket.to(room).emit("leave", user);
     callback('Data received and processed successfully');
-  });
-
-  socket.on('broadcast', (room, char, value, callback) => {
+  };
+  
+  const handleBroadcast = (room, char, value, callback, socket) => {
     console.log('broadcast :', char['id'], char['name'], room, value);
     socket.to(room).emit("receive message", char, value);
     callback('Data received and processed successfully');
-  });
-
-  socket.on('whisper', (room, userId, value, callback) => {
+  };
+  
+  const handleWhisper = (room, userId, value, callback, io) => {
     console.log('whisper :', userId, value);
     io.to(userId).emit("whisper", room, value);
     callback('Data received and processed successfully');
-  });
-
-  socket.on('message', (char, value, callback) => {
+  };
+  
+  const handleMessage = (char, value, callback, io) => {
     console.log('message :', char['id'], char['name'], value);
     callback('Data received and processed successfully');
     io.emit("receive message", char, value);
-  });
-});
-
-httpServer.listen(8282);
+  };
+  
+  module.exports = {
+    handleInit,
+    handleDisconnect,
+    handleFoo,
+    handleLogin,
+    handleJoin,
+    handleLeave,
+    handleBroadcast,
+    handleWhisper,
+    handleMessage
+  };
+  
