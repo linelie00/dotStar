@@ -101,7 +101,7 @@ textarea {
   right: 0;
   width: 388px; /* 채팅창의 너비 조정 */
   min-width: 388px; /* 채팅창의 최소 너비 설정 */
-  height: 100vh; /* 채팅창의 높이를 화면 전체로 설정 */
+  height: 100%; /* 채팅창의 높이를 화면 전체로 설정 */
 }
 .chat-container {
   position: absolute;
@@ -141,11 +141,20 @@ textarea {
 .chat-box {
   position: relative; /* textarea를 부모 요소에 고정합니다. */
   width: 100%; /* textarea의 너비를 부모 요소의 너비에 맞춥니다. */
-  height: calc(100% - 159px); /* textarea의 높이를 부모 요소의 높이에 맞춥니다. */
   overflow-y: auto;
+  box-sizing: border-box;
 }
 .chat-box::-webkit-scrollbar {
   display: none; /* 스크롤바를 숨깁니다. */
+}
+
+.chat {
+  height: calc(100% - 159px);
+}
+
+.etc {
+  height: calc(100% - 32px);
+  padding-left: 15px;
 }
 .chatting {
   position: absolute; /* textarea를 부모 요소에 고정합니다. */
@@ -171,6 +180,11 @@ textarea {
   top: 0;
   background-color: #E4E9FF;
   border-bottom: 2px solid #B8C1EE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 .header {
   position: fixed;
@@ -242,4 +256,90 @@ textarea {
   position: absolute;
   width: 100%; /* 채팅창의 너비 조정 */
   height: 100%; /* 채팅창의 높이를 화면 전체로 설정 */
+}
+
+.chat-bar-button-container {
+  width: 65px; /* 버튼의 너비 조정 */
+  align-items: center; /* 버튼을 세로로 가운데 정렬 */
+  display: flex; /* 버튼을 가로로 정렬 */
+  justify-content: space-between; /* 자식 요소 사이의 간격을 최대로 설정 */
+  box-sizing: border-box; /* 패딩을 포함한 전체 너비 설정 */
+}
+
+.search-container {
+  width: 316px;
+  height: 30px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-input {
+  width: 284px;
+  height: 28px;
+  box-sizing: border-box;
+  border: #a0a0a0 1px solid;
+  border-radius: 8px;
+  outline: none;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.list-container {
+  width: 316px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.list-container::-webkit-scrollbar {
+  display: none; /* 스크롤바를 숨깁니다. */
+}
+
+
+.topic-container {
+  width: 316px;
+  height: 30px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.topic-container img {
+  margin-right: 10px;
+}
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  height: 27px;
+  border-bottom: #d9d9d9 1px solid;
+  font-size: 14px;
+}
+
+.folder-header span {
+  padding: 0;
+  margin: 0;
+}
+
+.folder-header img {
+  margin-right: 10px;
+}
+
+.folder-header input {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.folder-content {
+  padding-left: 20px;
+  padding-top: 10px;
 }
