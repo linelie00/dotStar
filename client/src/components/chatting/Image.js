@@ -36,7 +36,7 @@ export default function App() {
           <img src={folder_ic} alt=''/>
           Folder
         </div>
-        <div className='list-container folder-container'>
+        <div className='list-container folder-box'>
           {folders.map((folder, index) => (
             <Folder key={index} name={folder} />
           ))}

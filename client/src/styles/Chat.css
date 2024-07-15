@@ -296,7 +296,7 @@ textarea {
   display: none; /* 스크롤바를 숨깁니다. */
 }
 
-.folder-container {
+.folder-box {
   height: 300px;
 }
 
