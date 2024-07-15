@@ -4,6 +4,8 @@ import uploadFile from '../../assets/images/upload_file.svg';
 import search_ic from '../../assets/images/search_ic.svg';
 import folder_ic from '../../assets/images/folder.svg';
 import file_ic from '../../assets/images/file.svg';
+import add from '../../assets/images/add_round.svg';
+import people_ic from '../../assets/images/people.svg';
 import Folder from './chatComponents/Folder'; // Import the Folder component
 
 export default function App() {
@@ -17,13 +19,13 @@ export default function App() {
   return (
     <div className="chat-box-container">
       <div className="chat-bar">
-        라이브러리
+        저널&핸드아웃
         <div className="chat-bar-button-container">
           <button className="button" onClick={addFolder}>
             <img src={importFile} alt=''/>
           </button>
           <button className="button">
-            <img src={uploadFile} alt=''/>
+            <img src={add} alt=''/>
           </button>
         </div>
       </div>
@@ -33,17 +35,17 @@ export default function App() {
           <input className='search-input' />
         </div>
         <div className='topic-container'>
-          <img src={folder_ic} alt=''/>
-          Folder
+          <img src={people_ic} alt=''/>
+          Characters
         </div>
-        <div className='list-container folder-container'>
+        <div className='list-container'>
           {folders.map((folder, index) => (
             <Folder key={index} name={folder} />
           ))}
         </div>
         <div className='topic-container'>
           <img src={file_ic} alt=''/>
-          Recent Uploads
+          Handouts
         </div>
       </div>
     </div>

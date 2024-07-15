@@ -1,6 +1,7 @@
 import React from 'react';
 import Chat from './Chat.js';
 import Image from './Image.js';
+import Handout from './Handout.js';
 
 const ContentDisplay = ({ content, setSelectedChar, selectedChar }) => {
   return (
@@ -9,7 +10,7 @@ const ContentDisplay = ({ content, setSelectedChar, selectedChar }) => {
         <Chat setSelectedChar={setSelectedChar} selectedChar={selectedChar} />
       </div>
       {content === 'image' && <Image />}
-      {content === 'handout' && <div>Handout Content</div>}
+      {content === 'handout' && <Handout />}
       {content === 'macro' && <div>Macro Content</div>}
       {content === 'settings' && <div>Settings Content</div>}
     </div>
