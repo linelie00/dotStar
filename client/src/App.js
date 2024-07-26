@@ -7,6 +7,7 @@ import MainPage from './page/MainPage';
 import './App.css';
 import { GlobalStyles, FontStyles } from './styles/GlobalStyles';
 import { ColorStyles } from './styles/variable';
+import SessionInfoPage from './page/SessionInfoPage';
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
           <Route path="/sign" element={<SignPage />} />
           <Route path="/intro" element={<IntroPage />} />
           <Route path="/main" element={<MainPage />} />
+          <Route path="/sessionInfo" element={<SessionInfoPage />} />
           {/* 다른 라우트들 추가 */}
         </Routes>
       </Router>

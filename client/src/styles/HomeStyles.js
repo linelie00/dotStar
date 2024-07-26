@@ -22,7 +22,6 @@ const ContentContainer = styled.div`
 const MainContainer = styled.div`
   max-width: 1200px;
   width: 62.5%;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -73,12 +72,12 @@ const LoginContainer = styled.div`
 `;
 
 const MainHeaderContainer = styled.div`
-  width: 100%;
+  width: calc(100% - 48px);
   height: 36px;
 
   margin: 34px 24px 24px;
   display: flex;
-  justify-contents: space-between;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -104,7 +103,9 @@ const MainGameBox = styled.div`
   margin-bottom: 32px;
   border: 1px solid var(--gray-borderColor);
   border-radius: 16px;
+
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 `;
 
 const MainGameContentBox = styled.div`
@@ -207,6 +208,59 @@ const MainGameDateTxt = styled.div`
   color: var(--gray-fontColor);
 `;
 
+const MainGameSearch = styled.input`
+  width: 196px;
+  height: 32px;
+
+  font-family: '<Pretendard>';
+  font-size: 14px;
+  color: var(--gray-fontColor);
+
+  border: 1px solid #a0a0a0;
+  border-radius: 8px;
+  padding: 0px 12px;
+  outline: none;
+`;
+
+const InfoLeftBox = styled.div`
+  width: 64%;
+`;
+
+const InfoRightBox = styled.div`
+  width: 360px;
+`;
+
+const InfoMasterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const InfoMasterBox = styled.div`
+  width: fit-content;
+  display: flex;
+`;
+
+const InfoMasterTxtBox = styled.div`
+  width: fit=content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: 16px;
+`;
+
+const InfoCardImg = styled.div`
+  width: 100%;
+  height: 472px;
+
+  background: #d9d9d9;
+  border-radius: 16px;
+  margin-bottom: 20px;
+`;
+
 export {
   BodyContainer,
   ContentContainer,
@@ -231,4 +285,11 @@ export {
   LoginInfoTxt,
   MainGameTitleTxt,
   MainGameDateTxt,
+  MainGameSearch,
+  InfoLeftBox,
+  InfoRightBox,
+  InfoCardImg,
+  InfoMasterContainer,
+  InfoMasterBox,
+  InfoMasterTxtBox,
 };

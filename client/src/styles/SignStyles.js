@@ -63,6 +63,10 @@ const SignInBtn = styled.div`
   width: calc(100% - 24px);
   height: 22px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   padding: 12px;
   border-radius: 8px;
   background: var(--dotStar-mainColor);
@@ -74,6 +78,10 @@ const SignInBtn = styled.div`
 const SignUpBtn = styled.div`
   width: calc(100% - 24px);
   height: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   padding: 12px;
   border-radius: 8px;

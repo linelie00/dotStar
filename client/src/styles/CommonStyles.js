@@ -9,12 +9,13 @@ const CommonBtn = styled.div`
   justify-content: center;
 
   padding: 0px 8px;
+  box-shadow: ${(props) => props.boxShadow};
   border-radius: 4px;
 
-  color: var(--white-fontColor);
+  color: ${(props) => props.color};
   font-size: 16px;
-  font-weight: bold;
-  background: var(--point-bgColor);
+  font-weight: ${(props) => props.fontWeight};
+  background: ${(props) => props.background};
   cursor: pointer;
 `;
 
@@ -42,4 +43,11 @@ const CommonUser = styled.div`
   background: var(--gray-bgColor);
 `;
 
-export { CommonBtn, CommonTag, CommonUser };
+const CommonTxt = styled.div`
+  font-family: 'Pretendard';
+  font-weight: ${(props) => props.fontWeight};
+  font-size: ${(props) => props.fontSize};
+  color: ${(props) => props.color};
+`;
+
+export { CommonBtn, CommonTag, CommonUser, CommonTxt };
